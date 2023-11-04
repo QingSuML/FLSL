@@ -1,7 +1,7 @@
-# Self-Supervised Vision Transformers with FLSL
+# FLSL: Feature-Level Self-supervised Learning
 
 PyTorch implementation and pretrained models for FLSL. For details, see **FLSL: Feature-Level Self-supervised Learning**.  
-[[`arXiv`](https://arxiv.org/abs/2306.06203)] [[`video`](https://www.youtube.com/watch?v=h12345?)]
+[[`NeurIPS2023`](https://openreview.net/pdf?id=8pOBo5NgTQ)] [[`video`](https://www.youtube.com/watch?v=h12345?)]
 
 <div align="center">
   <img width="100%" alt="FLSL Framework" src=".github/flsl_framework_large.gif">
@@ -47,14 +47,29 @@ torchrun --standalone --nproc_per_node=gpu \
 
 Change the vit_small to vit_base for FLSL with ViT-base model.
 
+## Pretrained weights on ImageNet
+You can download the weights of the pretrained models on ImageNet.
+
+| Dataset  | arch | checkpoint |
+| ------------- | ------------- | ------------- |
+| IN-1K | ViT-S/16  | <a href="https://drive.google.com/file/d/1AB1o1doyceOm-_s71l547RbNGgVrrNjl/view?usp=drive_link">download</a>|
+| IN-1K| ViT-S/8 | <a href="https://drive.google.com/file/d/1nWTJWwzWzWiLRJMOBBr2swiZup9Lhab8/view?usp=drive_link">download</a> |
+| IN-1K| ViT-B/16 | <a href="https://drive.google.com/file/d/1AB1o1doyceOm-_s71l547RbNGgVrrNjl/view?usp=drive_link">download</a> |
+
 ## Evaluating object detection and instance segmentation on the COCO dataset
+
 Step 1. Prepare COCO dataset  
+
 The dataset can be downloaded at [`https://cocodataset.org/#download`](https://cocodataset.org/#download)  
+
 Step 2. Install mmdetection  
+
 ```
 git clone https://github.com/open-mmlab/mmdetection.git
 ```
+
 Step 3. Fine-tune on the COCO dataset  
+
 ```
 tools/dist_train.sh configs/selfpatch/mask_rcnn_vit_small_12_p16_1x_coco.py [number of gpu]\  
 --work-dir /path/to/saving_dir\
@@ -93,6 +108,25 @@ tools/dist_train.sh configs/selfpatch/semfpn_vit-s16_512x512_40k_ade20k.py [numb
 ```
 The optimization hyperarameters are adopted from <a href=https://github.com/facebookresearch/xcit>XCiT</a>.
 
+## Evaluating video object segmentation on the DAVIS 2017 dataset
+Step 1. Prepare DAVIS 2017 data
+
+```
+cd $HOME
+git clone https://github.com/davisvideochallenge/davis-2017
+cd davis-2017
+./data/get_davis.sh
+```
+
+Step 2. Run Video object segmentation
+
+```
+python eval_video_segmentation.py\
+--data_path /path/to/davis-2017/DAVIS/\
+--output_dir /path/to/saving_dir\  --pretrained_weights /path/to/model_dir\
+--arch vit_small\
+--patch_size 16
+```
 
 ## Citation
 If you find this repository useful, please consider giving a star :star: and citation:
