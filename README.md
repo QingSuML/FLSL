@@ -53,7 +53,7 @@ You can download the weights of the pretrained models on ImageNet.
 | Dataset  | arch | checkpoint |
 | ------------- | ------------- | ------------- |
 | IN-1K | ViT-S/16  | <a href="https://drive.google.com/file/d/1vhzEHHNviL7X13OmGn_rEfb9-JXrNk9C/view?usp=sharing">download</a>|
-| IN-1K| ViT-B/16 | <a href="https://drive.google.com/file/d/1AB1o1doyceOm-_s71l547RbNGgVrrNjl/view?usp=drive_link">download</a> |
+
 
 ## Evaluating object detection and instance segmentation on the COCO dataset
 
