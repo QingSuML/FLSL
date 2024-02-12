@@ -1,7 +1,7 @@
 # FLSL: Feature-Level Self-supervised Learning
 
 PyTorch implementation and pretrained models for FLSL. For details, see **FLSL: Feature-Level Self-supervised Learning**.  
-[[`NeurIPS2023`](https://openreview.net/pdf?id=8pOBo5NgTQ)] [[`video`](https://www.youtube.com/watch?v=h12345?)]
+[[`NeurIPS2023`]([https://openreview.net/pdf?id=8pOBo5NgTQ](https://neurips.cc/virtual/2023/poster/72627))]
 
 <div align="center">
   <img width="100%" alt="FLSL Framework" src=".github/flsl_framework_large.gif">
